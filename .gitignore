@@ -1,0 +1,10 @@
+# Dependency directories
+node_modules/
+
+logs/
+*.log
+npm-debug.log*
+
+/.vscode
+
+.DS_Store
