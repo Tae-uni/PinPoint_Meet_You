@@ -1,26 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SignUp</title>
+    <!-- home.css is not working... -->
+    <link rel="stylesheet" href="../public/signup.css">
+    <style>
+        body {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .blo {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+        }
+    </style>
 </head>
-
 <body>
-
     <h2>Sign Up</h2>
     <form action="/signup" method="post">
-        <label for="name">Username:</label><br>
-        <input type="text" name="name"><br>
-        <label for="password">Password:</label><br>
-        <input type="password" name="password"><br>
-        <label for="email">E-mail:</label><br>
-        <input type="email" name="email"><br>
+        <div class="blo">
+            <label for="username">Username:</label>
+            <input type="text" name="username"><br>
+        </div>
+        <div class="blo">
+            <label for="email">E-mail:</label>
+            <input type="email" name="email"><br>
+        </div>
+        <div class="blo">
+            <label for="password">Password:</label>
+            <input type="password" name="password"><br>
+        </div>
+        <div class="blo">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" name="confirmPassword"><br>
+        </div>
+        <div class="blo">
+            <label for="birthdate">Birth Date:</label>
+            <input type="date" name="birthdate"><br>
+        </div>
+        <div class="blo">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender"><br>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
         <input type="submit">
     </form>
-
-
 </body>
-
 </html>

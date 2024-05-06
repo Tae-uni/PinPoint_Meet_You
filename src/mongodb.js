@@ -10,7 +10,7 @@ mongoose.connect("mongodb://localhost:27017/LoginSignUpTest") // 27017/(name of 
 // --- Basic setting ---
 
 const LogInSchema = new mongoose.Schema({
-    name:{
+    username:{
         type:String,
         required:true
     },

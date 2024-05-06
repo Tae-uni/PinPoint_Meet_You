@@ -10,6 +10,7 @@ const templatePath = path.join(__dirname, '../templates');
 
 // Middleware settings
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '../public')));
 app.set("view engine", "hbs"); // ejs
 app.set("views", templatePath);
 app.use(express.urlencoded({ extended: false })); // mongoDB
