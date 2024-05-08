@@ -4,16 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .blo {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     
     <h2>Log in</h2>
-    <form action="/login" method="post"> 
-        <input type="text" name="name" placeholder="Name">
-        <input type="password" name="password" placeholder="Password">
+    <form action="/login" method="post">
+        <div class="blo">
+            <label for="email">E-mail</label>
+            <input type="text" name="email">
+        </div>
+        <div class="blo">
+            <label for="password">Password</label>
+            <input type="password" name="password">
+        </div>
         <input type="submit">
     </form>
-
+    <br><br>
     <a href="/signup">Make a new account</a>
 
 </body>
