@@ -1,6 +1,6 @@
-const collection = require("../mongodb");
+const { User } = require("../mongodb");
 
-const signupController = (collection) => async(req,res,next) => {
+const signupController = async(req,res,next) => {
     try {
         const { username, email, password, birthdate, gender } = req.body;
         const newUser = {
@@ -10,7 +10,8 @@ const signupController = (collection) => async(req,res,next) => {
             birthdate,
             gender
         };
-        await collection.insertMany([newUser]);
+        //await User.create(newUser);
+        await User.insertMany([newUser]);
         res.render("home", { message: "Signup successful!" });
     } catch (err) {
         next(err);

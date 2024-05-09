@@ -9,7 +9,7 @@ mongoose.connect("mongodb://localhost:27017/LoginSignUpTest") // 27017/(name of 
 })
 // --- Basic setting ---
 
-const LogInSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     username:{
         type:String,
         required:true,
@@ -45,6 +45,45 @@ const LogInSchema = new mongoose.Schema({
     }
 });
 
-const collection = new mongoose.model("LogInCollection",LogInSchema)
+const GroupSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true,
+        maxlength: 255,
+        trim: true
+    },
+    maxParticipants: {
+        type: Number,
+        required: true,
+        default: 0
+    },
+    currentParticipants: {
+        type: Number,
+        required: true,
+        default: 0
+    },
+    description: {
+        type: String,
+        maxlength: 1000,
+        required: true
+    },
+    pic: {
+        type: String,
+        maxlength: 255
+    },
+    // foreign key.. ref from LogInCollection.
+    creatorId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'LogInCollection'
+    },
+    isFull: {
+        type: Boolean,
+        default: false
+    }
+});
 
-module.exports = collection // Don't forget!! If not, you can't use in index.js
+const User = mongoose.model("User", userSchema);
+const Group = mongoose.model("Group", GroupSchema);
+
+module.exports = { User, Group }; // Don't forget!! If not, you can't use in index.js

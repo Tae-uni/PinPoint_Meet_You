@@ -1,8 +1,8 @@
-const collection = require("../mongodb");
+const { User } = require("../mongodb");
 
-const loginController = (collection) => async(req, res, next) => {
+const loginController = async(req, res, next) => {
     try {
-        const user = await collection.findOne({ email: req.body.email });
+        const user = await User.findOne({ email: req.body.email });
         
         if (user && user.password === req.body.password) {
             res.render("home");

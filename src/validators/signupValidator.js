@@ -8,7 +8,7 @@ const userValRules = () => {
         body('email', 'Invalid email format').isEmail().normalizeEmail(),
         body('password', 'Password must be at least 8 characters long and include one lowercase letter, one uppercase letter, one number, and one special character.')
             .isLength({ min: 8 })
-            .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
+            .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
             .withMessage('Password must include at least one lowercase letter, one uppercase letter, one number, and one special character.'),
         body('confirmPassword', 'Passwords do not match')
             .custom((value, {req}) => value === req.body.password),
