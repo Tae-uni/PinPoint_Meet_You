@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Group</title>
+</head>
+<body>
+    <h1>Create Group Page</h1>
+    <!-- Need to add enctype.. for using the multer -->
+    <form action="/groups" method="POST" enctype="multipart/form-data">
+        <label for="title">Group Title:</label>
+        <input type="text" id="title" name="title" required><br>
+
+        <label for="image">Upload Image:</label>
+        <input type="file" id="image" name="image" accept="image/*"><br>
+
+        <label for="maxParticipants">Maximum maxParticipants:</label>
+        <input type="number" name="maxParticipants" id="maxParticipants"><br>
+
+        <label for="description">Description:</label>
+        <textarea name="description" id="description" required></textarea><br>
+
+        <button type="submit">Create Group</button>
+    </form>
+</body>
+</html>

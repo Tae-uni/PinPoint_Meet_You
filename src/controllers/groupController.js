@@ -2,6 +2,7 @@
    study about Asynchronous, Promise. */
 
 const { Group } = require('../mongodb');
+const upload = require('../middlewares/upload');
 
 // searches for a group by its 'groupId' using the 'findById' method.
 // groupId is from the client. not from the mongoDB.
@@ -72,6 +73,7 @@ const groupController = {
                 title,
                 maxParticipants,
                 description,
+                pic: req.file ? req.file.path : '', // File directory add.
                 currentParticipants: 0,
                 isFull: false
             });

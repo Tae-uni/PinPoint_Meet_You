@@ -72,11 +72,11 @@ const GroupSchema = new mongoose.Schema({
         maxlength: 255
     },
     // foreign key.. ref from LogInCollection.
-    creatorId: {
+    /*creatorId: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'LogInCollection'
-    },
+    },*/
     isFull: {
         type: Boolean,
         default: false
