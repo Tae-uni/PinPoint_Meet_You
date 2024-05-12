@@ -16,6 +16,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.set("view engine", "hbs"); // ejs
 app.set("views", templatePath);
 app.use(express.urlencoded({ extended: false })); // mongoDB
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // route settings
 /*app.get("/", (req, res) => {

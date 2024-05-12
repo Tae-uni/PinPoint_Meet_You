@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of groups</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+        }
+        li {
+            background-color: #d4d4d4;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 8px 0;
+            padding: 10px;
+            width: 300px;
+            text-align: center;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+            text-align: center;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Availbale Groups</h1>
+    <ul>
+        {{#each groups}}
+            <li>
+                <strong>{{this.title}}</strong> - {{this.description}}
+                <br>
+                Participants: {{this.currentParticipants}}/{{this.maxParticipants}}
+                <br>
+                {{#if this.isFull}}
+                    <em>Group is full</em>
+                {{else}}
+                    <em>Availbale to join!</em>
+                {{/if}}
+                <br>
+                <a href="/groups/{{this.id}}">View Details</a>
+            </li>
+        {{/each}}
+    </ul>
+    <a href="/createGroup">Create New Group</a>
+</body>
+</html>

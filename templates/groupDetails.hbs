@@ -4,8 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail of Group</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h1>Detail of Group</h1>
+    <h1>{{group.title}}</h1>
+    <p>Description: {{group.description}}</p>
+    Maximum Participants: {{group.maxParticipants}}
+    <p>Current Participants: {{group.currentParticipants}}</p>
+    {{#if group.pic}}
+    <img src="{{group.pic}}" alt="Group Image" style="width: 300px; height:200px;">
+    {{/if}}
+    <p>{{#if group.isFull}}This group is full.{{else}}Spots availble!{{/if}}</p>
+    <a href="/groups">Back to Group List</a>
 </body>
 </html>

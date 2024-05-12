@@ -69,11 +69,12 @@ const groupController = {
     async createGroup(req, res) {
         const { title, maxParticipants, description } = req.body;
         try {
+            const pic = req.file ? '/uploads/' + req.file.filename : '';
             const newGroup = new Group({
                 title,
                 maxParticipants,
                 description,
-                pic: req.file ? req.file.path : '', // File directory add.
+                pic, // File directory add.
                 currentParticipants: 0,
                 isFull: false
             });
@@ -88,7 +89,8 @@ const groupController = {
     async listGroup(req, res) {
         try {
             const groups = await Group.find({});
-            res.status(200).send(groups);
+            res.render('groupList', { groups });
+            //res.status(200).send(groups);
         } catch (error) {
             res.status(500).send({ message: "Failed to list groups", error: error.message });
         }
@@ -97,7 +99,11 @@ const groupController = {
     async getGroupDetails(req, res) {
         try {
             const group = await findGroup(req.params.groupId);
-            res.status(200).send(group);
+            if (!group) {
+                res.status(404).send("Group not found");
+            } else {
+                res.render('groupDetails', { group });
+            }
         } catch (error) {
             res.status(404).send({ message: "Group not found", error: error.message })
         }
