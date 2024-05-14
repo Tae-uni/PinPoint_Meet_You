@@ -1,10 +1,16 @@
 # Dependency directories
-node_modules/
+server/node_modules/
 
-logs/
-*.log
-npm-debug.log*
+server/logs/
+server/*.log
+server/npm-debug.log*
 
-/.vscode
+server/.vscode
 
-.DS_Store
+server/.DS_Store
+
+client/node_modules/
+client/.DS_Store
+client/*.local
+client/dist
+client/dist-ssr

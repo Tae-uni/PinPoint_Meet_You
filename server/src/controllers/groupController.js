@@ -92,11 +92,13 @@ const groupController = {
                 isFull: false
             });
             await newGroup.save();
-            res.redirect(`/groups/${newGroup._id}`); 
+            res.status(201).json({ message: "Group created successfully", group: newGroup });
+            // res.redirect(`/groups/${newGroup._id}`); 
             // res.status(201).send({ message: "Group created sucessfully", group: newGroup });
             // res.redirect("/groups");
         } catch (error) {
-            res.status(500).send({ message: "Failed to create group", error: error.message });
+            res.status(500).json({ message: "Failed to create group", error: error.message });
+            // res.status(500).send({ message: "Failed to create group", error: error.message });
         }
     },
 
