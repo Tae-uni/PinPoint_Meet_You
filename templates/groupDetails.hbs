@@ -26,6 +26,14 @@
     <img src="{{group.pic}}" alt="Group Image" style="width: 300px; height:200px;">
     {{/if}}
     <p>{{#if group.isFull}}This group is full.{{else}}Spots availble!{{/if}}</p>
-    <a href="/groups">Back to Group List</a>
+
+    <a href="/groups">Back to Group List</a><br>
+    <a href="/groups/{{group._id}}/edit">
+        <button>Update Group</button>
+    </a>
+
+    <form action="/groups/{{group._id}}?_method=DELETE" method="POST" style="margin-top: 10px;">
+        <button type="submit">Delete Group</button>
+    </form>
 </body>
 </html>

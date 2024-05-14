@@ -3,6 +3,8 @@
 
 const { Group } = require('../mongodb');
 const upload = require('../middlewares/upload');
+const fs = require('fs');
+const path = require('path');
 
 // searches for a group by its 'groupId' using the 'findById' method.
 // groupId is from the client. not from the mongoDB.
@@ -12,6 +14,17 @@ async function findGroup(groupId) {
         throw new Error('Group not found.');
     }
     return group;
+};
+
+// Delete image from local storage
+function deleteImage(filePath) {
+    fs.unlink(filePath, (err) => {
+        if (err) {
+            console.error(`Error deleting file: ${filePath}`, err);
+        } else {
+            console.log(`Successfully deleted file: ${filePath}`);
+        }
+    });
 };
 
 /* Object literal, with two different async function. */
@@ -79,7 +92,8 @@ const groupController = {
                 isFull: false
             });
             await newGroup.save();
-            res.status(201).send({ message: "Group created sucessfully", group: newGroup });
+            res.redirect(`/groups/${newGroup._id}`); 
+            // res.status(201).send({ message: "Group created sucessfully", group: newGroup });
             // res.redirect("/groups");
         } catch (error) {
             res.status(500).send({ message: "Failed to create group", error: error.message });
@@ -106,6 +120,58 @@ const groupController = {
             }
         } catch (error) {
             res.status(404).send({ message: "Group not found", error: error.message })
+        }
+    },
+
+    // Rendering update group page
+    async renderUpdateGroupPage(req, res) {
+        try {
+            const group = await findGroup(req.params.groupId);
+            res.render('updateGroup', { group });
+        } catch (error) {
+            res.status(404).send("Group not found");
+        }
+    },
+
+    // Group Update
+    async updateGroup(req, res) {
+        const groupId = req.params.groupId;
+        const updateData = req.body;
+        try {
+            const group = await findGroup(groupId);
+            for (const key in updateData) {
+                if (Object.hasOwnProperty.call(updateData, key)) {
+                    group[key] = updateData[key];
+                }
+            }
+            if (req.file) {
+                group.pic = '/uploads/' + req.file.filename;
+            }
+            // save group
+            await group.save();
+            res.redirect(`/groups/${groupId}`);
+            // res.status(200).send({ message: "Group updated successfully", group });
+        } catch (error) {
+            console.error("Error updating group:", error.message);
+            res.status(500).send({ message: "Error updating the group.", error:error.message });
+        }
+    },
+
+    async deleteGroup(req, res) {
+        const groupId = req.params.groupId;
+        try {
+            const group = await findGroup(groupId);
+            // delete the pic before remove the group.
+            if (group.pic) {
+                const imagePath = path.join(__dirname, '../..', group.pic);
+                deleteImage(imagePath);
+            }
+
+            await Group.findByIdAndDelete(groupId);
+            res.redirect('/groups');
+        } catch (error) {
+            console.error("Error deleting group:", error.message);
+            res.status(500).send({ message: "Error deleting the group.", error: error.message });
         }
     }
 };

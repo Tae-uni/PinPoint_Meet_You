@@ -5,9 +5,11 @@ const loginController = async(req, res, next) => {
         const user = await User.findOne({ email: req.body.email });
         
         if (user && user.password === req.body.password) {
-            res.render("home");
+            res.json({ success: true, message: "Login successful" });
+            // res.render("home");
         } else {
-            res.send("Wrong email or password!");
+            res.status(401).json({ success: false, message: "Wrong email or password!" });
+            // res.send("Wrong email or password!");
         }
     } catch (err) {
         next(err);

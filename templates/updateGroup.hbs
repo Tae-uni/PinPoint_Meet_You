@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Group</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+        input {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Update Group</h1>
+    <form action="/groups/{{group._id}}?_method=PUT" method="POST" enctype="multipart/form-data">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="{{group.title}}" required><br>
+
+        <label for="maxParticipants">Max Participants:</label>
+        <input type="number" id="maxParticipants" name="maxParticipants" value="{{group.maxParticipants}}" required><br>
+
+        <label for="description">Description:</label>
+        <textarea name="description" id="description" required>{{group.description}}</textarea><br>
+
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image"><br>
+
+        <button type="submit">Update Group</button>
+    </form>
+    <a href="/groups">Back to Group List</a>
+</body>
+</html>
