@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+/*import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearGroupData } from './store';
 import { useNavigate } from 'react-router-dom';
@@ -39,4 +39,19 @@ function PageGet1() {
   );
 }
 
-export default PageGet1;
+export default PageGet1; 
+
+// PageGet1.jsx
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import GroupDetail from './components/GroupDetail/GroupDetail';
+
+const PageGet1 = () => {
+    return (
+            <Routes>
+                <Route path=":groupId" element={<GroupDetail />} />
+            </Routes>
+    );
+};
+
+export default PageGet1; */

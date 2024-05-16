@@ -80,6 +80,10 @@ const GroupSchema = new mongoose.Schema({
     isFull: {
         type: Boolean,
         default: false
+    },
+    placeName: {
+        type: String,
+        maxlength: 255
     }
 });
 

@@ -16,14 +16,22 @@ router.post("/signup", userValRules(), validateSignup, signupController); // Val
 // Group Management Routes
 router.get("/groups", groupController.listGroup);
 router.get("/groups/:groupId", groupController.getGroupDetails);
-router.post("/groups", upload.single('image'), groupController.createGroup);
-router.put("/groups/:groupId", upload.single('image'), groupController.updateGroup);
+router.post("/groups", upload.single('image'), groupController.createGroup); // Create the new group
+router.put("/groups/:groupId", upload.single('image'), groupController.updateGroup); // Update the group
+router.delete('/groups/:groupId', groupController.deleteGroup);
 
+// Participants Management Routes
 router.put("/groups/:groupId/participants", groupController.joinGroup);
 router.delete("/groups/:groupId/participants", groupController.leaveGroup);
 
+// Render page for creating a group
 router.get('/createGroup', (req,res) => res.render('createGroup'));
+
+// Render update group
 router.get('/groups/:groupId/edit', groupController.renderUpdateGroupPage);
-router.delete('/groups/:groupId', groupController.deleteGroup);
+
+// Check group data
+router.get('/checkGroupData/:placeName', groupController.checkGroupData);
+// router.get('/api/checkgroupdata/:placeName', groupController.checkGroupData); // /api 경로 추가
 
 module.exports = router;

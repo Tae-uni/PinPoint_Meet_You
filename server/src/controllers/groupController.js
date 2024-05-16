@@ -80,13 +80,15 @@ const groupController = {
     },
 
     async createGroup(req, res) {
-        const { title, maxParticipants, description } = req.body;
+        const { title, maxParticipants, description, placeName } = req.body;
+        console.log(`Creating group with placeName: ${placeName}`);
         try {
             const pic = req.file ? '/uploads/' + req.file.filename : '';
             const newGroup = new Group({
                 title,
                 maxParticipants,
                 description,
+                placeName,
                 pic, // File directory add.
                 currentParticipants: 0,
                 isFull: false
@@ -118,7 +120,8 @@ const groupController = {
             if (!group) {
                 res.status(404).send("Group not found");
             } else {
-                res.render('groupDetails', { group });
+                //res.render('groupDetails', { group });
+                res.status(200).json(group);
             }
         } catch (error) {
             res.status(404).send({ message: "Group not found", error: error.message })
@@ -174,6 +177,29 @@ const groupController = {
         } catch (error) {
             console.error("Error deleting group:", error.message);
             res.status(500).send({ message: "Error deleting the group.", error: error.message });
+        }
+    },
+
+    async checkGroupData(req, res) {
+        const { placeName } = req.params;
+        console.log(`Checking group data for place: ${placeName}`);
+        try {
+            const decodedPlaceName = decodeURIComponent(placeName); // URL Decdoing
+            console.log(`Decoded place name: ${decodedPlaceName}`);
+            const group = await Group.findOne({ placeName: decodedPlaceName });
+            if (group) {
+                res.status(200).json({
+                    exists: true,
+                    title: group.title,
+                    maxParticipants: group.maxParticipants,
+                    description: group.description,
+                    placeName: group.placeName
+                });
+            } else {
+                res.status(404).json({ exists: false });
+            }
+        } catch (error) {
+            res.status(500).json({ message: "Error checking group data", error: error.message });
         }
     }
 };

@@ -66,17 +66,37 @@ function MapComponent() {
     }, []);
 
     // 클릭한 마커의 정보에 따라 페이지 이동 처리
-    const handleMarkerClick = (place) => {
-      // PageSet1에서 데이터 입력 여부 확인
-      if(place.name === "공대 앞 음식&술집"){
-        if (groupData.title && groupData.limit && groupData.content) {
-          navigate('/web/PageGet1');
+    const handleMarkerClick = async (place) => {
+      // PageSet에서 데이터 입력 여부 확인, 동적으로 URI을 찾아옴.
+      try {
+        const encodedPlaceName = encodeURIComponent(place.name);
+        const response = await fetch(`/api/checkgroupdata/${encodedPlaceName}`);
+        const data = await response.json();
+
+        if (data.exists && data.title && data.maxParticipants && data.description) {
+          navigate(`/web/PageGet/${encodedPlaceName}`);
         } else {
-          navigate('/web/PageSet1');
+          navigate(`/web/PageSet/${encodedPlaceName}`);
         }
+      } catch (error) {
+        console.error('Error checking group data:', error);
       }
     };
-  
+      /* if(place.name === "공대 앞 음식&술집"){
+        try {
+          const response = await fetch(`/api/checkgroupdata/${place.name}`);
+          const data = await response.json();
+
+          if (data.exists && data.title && data.maxParticipants && data.description) {
+            navigate('/web/PageGet1');
+          } else {
+            navigate('/web/PageSet1');
+          }
+        } catch (error) {
+          console.error('Error checking group data:', error);
+        }
+      }; */
+
     return (
       <div>
         <div id="map" style={{ width: '500px', height: '500px' }}></div>
