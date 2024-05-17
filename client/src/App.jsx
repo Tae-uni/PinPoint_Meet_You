@@ -7,6 +7,7 @@ import MapComponent2 from './MapComponent2.jsx';
 import UserPageGet1 from './UserPageGet1.jsx';
 import Login from './Login.jsx';
 import SignUp from './Signup.jsx';
+import UpdateGroup from './components/UpdateGroup/UpdateGroup.jsx';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path='/web/UserPageGet1' element={<UserPageGet1 />} />
         <Route path="/web/PageSet/:placeName" element={<PageSet />} />
         <Route path="/web/PageGet/:placeName" element={<PageGet />} />
+        <Route path='/groups/:groupId/edit' element={<UpdateGroup />} />
       </Routes> 
     </Router>
   );

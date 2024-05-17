@@ -22,7 +22,8 @@ const PageSet = () => {
                     title,
                     maxParticipants,
                     description,
-                    placeName
+                    placeName,
+                    currentParticipants: 0
                 }),
             });
 

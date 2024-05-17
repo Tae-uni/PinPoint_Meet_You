@@ -38,24 +38,26 @@ const groupController = {
         try {
             // findGroup is an async function. presumably queries the MongoDB usign the groupID.
             // It waits('await') for the result before moving on. If no group is found, it throws an error to 'catch' block.
-            const group = await findGroup(groupId);
-
+            const group = await Group.findById(groupId);
+            if (!group) {
+                return res.status(404).json({ message: "Group not found" });
+            }
             if (group.isFull) {
-                return res.status(400).send({ message: "This group is already full." });
+                return res.status(400).json({ message: "This group is already full." });
             }
 
             if (group.currentParticipants < group.maxParticipants) {
                 group.currentParticipants += 1;
-                group.isFull = group.currentParticipants === group.maxParticipants;
+                group.isFull = group.currentParticipants >= group.maxParticipants;
                 await group.save();
-                res.status(200).send({ message: "This group is already full." });
+                res.status(200).json({ message: "Successfully joined the group" });
                 // res.send({ message: "You have successfully joined the group.", group });
             } else {
-                res.status(400).send({ message: "No more participants can join." });
+                res.status(400).json({ message: "No more participants can join." });
             }
         } catch (error) {
             console.error("Error joining group:", error.message);
-            res.status(500).send({ message: "Error joining the group.", error: error.message });
+            res.status(500).json({ message: "Error joining the group.", error: error.message });
         }
     },
 
@@ -154,8 +156,8 @@ const groupController = {
             }
             // save group
             await group.save();
-            res.redirect(`/groups/${groupId}`);
-            // res.status(200).send({ message: "Group updated successfully", group });
+            //res.redirect(`/groups/${groupId}`);
+            res.status(200).json({ message: "Group updated successfully", group });
         } catch (error) {
             console.error("Error updating group:", error.message);
             res.status(500).send({ message: "Error updating the group.", error:error.message });
@@ -166,17 +168,17 @@ const groupController = {
         const groupId = req.params.groupId;
         try {
             const group = await findGroup(groupId);
-            // delete the pic before remove the group.
+            // delete the pic before removing the group.
             if (group.pic) {
                 const imagePath = path.join(__dirname, '../..', group.pic);
                 deleteImage(imagePath);
             }
 
             await Group.findByIdAndDelete(groupId);
-            res.redirect('/groups');
+            res.status(200).json({ message: "Successfully deleted the group." });
         } catch (error) {
             console.error("Error deleting group:", error.message);
-            res.status(500).send({ message: "Error deleting the group.", error: error.message });
+            res.status(500).json({ message: "Error deleting the group.", error: error.message });
         }
     },
 
@@ -190,10 +192,12 @@ const groupController = {
             if (group) {
                 res.status(200).json({
                     exists: true,
+                    _id: group._id,
                     title: group.title,
                     maxParticipants: group.maxParticipants,
                     description: group.description,
-                    placeName: group.placeName
+                    placeName: group.placeName,
+                    currentParticipants: group.currentParticipants
                 });
             } else {
                 res.status(404).json({ exists: false });

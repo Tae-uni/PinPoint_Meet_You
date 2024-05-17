@@ -105,7 +105,7 @@ const MapComponent = () => {
 
   return (
     <div>
-      <div id="map" style={{ width: '500px', height: '500px' }}></div>
+      <div id="map" style={{ width: '320px', height: '550px' }}></div>
       <div style={{ marginTop: '20px' }}>
         <button onClick={handleLogIn}>로그인</button>
       </div>
