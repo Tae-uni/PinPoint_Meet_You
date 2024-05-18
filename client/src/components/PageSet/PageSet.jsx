@@ -36,6 +36,10 @@ const PageSet = () => {
             console.error('Error creating group:', error);
         }
     };
+    
+    const handleMapComponent = () => {
+        navigate('/web');
+    };
 
     return (
         <div>
@@ -56,6 +60,7 @@ const PageSet = () => {
                     <textarea value={description} onChange={(e) => setDescription(e.target.value)} required></textarea>
                 </label>
                 <br />
+                <button onClick={handleMapComponent}>지도로 가기</button>
                 <button type="submit">Submit</button>
             </form>
         </div>

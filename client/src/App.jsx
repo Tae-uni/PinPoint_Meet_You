@@ -5,18 +5,20 @@ import PageSet from './components/PageSet/PageSet.jsx';
 import PageGet from './components/PageGet/PageGet.jsx';
 import MapComponent2 from './MapComponent2.jsx';
 import UserPageGet1 from './UserPageGet1.jsx';
-import Login from './Login.jsx';
+import Login from './components/Login/Login.jsx';
 import SignUp from './Signup.jsx';
 import UpdateGroup from './components/UpdateGroup/UpdateGroup.jsx';
+import StartPage from './components/StartPage/StartPage.jsx';
 
 function App() {
 
   return (
     <Router>
       <Routes>
+        <Route path='/' element={<StartPage/>} />
         <Route path="/web" element={<MapComponent />} />
         <Route path="/web2" element={<MapComponent2 />} />
-        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path='/web/Signup' element={<SignUp />} />
         <Route path='/web/UserPageGet1' element={<UserPageGet1 />} />
         <Route path="/web/PageSet/:placeName" element={<PageSet />} />
