@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './style.css'; // 필요한 경우 컴포넌트 전용 CSS 파일을 사용
+import './style.css';
 import logo from './LOGO.png';
 
 const StartPage = () => {

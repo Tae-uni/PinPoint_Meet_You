@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import './pageGet.css';
 
 const PageGet = () => {
   const { placeName } = useParams();
@@ -99,6 +100,11 @@ const PageGet = () => {
   return (
     <div>
       <h1>{groupData.title}</h1>
+      {groupData.image &&( 
+        <div className='image-container'>
+          <img src={groupData.image} alt='Picture' />
+        </div>
+      )}
       <p>현재 참여자 수: {groupData.currentParticipants}</p>
       <p>최대 참여자 수: {groupData.maxParticipants}</p>
       <p>설명: {groupData.description}</p>

@@ -22,6 +22,11 @@ export default defineConfig({
         target: 'http://localhost:3000',
         changeOrigin: true,
         rewrite: path => path.replace(/^\/api/,'') // URL에서 '/api'부분을 제거
+      },
+      '/uploads': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/uploads/, '/uploads')
       }
     }
   }

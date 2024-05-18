@@ -27,8 +27,9 @@ body, html {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 360px;  /* 가로 길이 설정 */
-    height: 600px;  /* 세로 길이 설정 */
+    max-width: 360px;
+    width: 400px;  /* 가로 길이 설정 */
+    height: 700px;  /* 세로 길이 설정 */
     background: linear-gradient(150deg, rgba(150, 172, 255, 1.00) 0%, rgba(245, 138, 255, 1.00) 100%);
     border-radius: 30px;  /* 모서리를 둥글게 설정 */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* 그림자 설정 */

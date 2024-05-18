@@ -197,7 +197,8 @@ const groupController = {
                     maxParticipants: group.maxParticipants,
                     description: group.description,
                     placeName: group.placeName,
-                    currentParticipants: group.currentParticipants
+                    currentParticipants: group.currentParticipants,
+                    image: group.pic
                 });
             } else {
                 res.status(404).json({ exists: false });

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import "./style.css";
+import logLogo from './logLogo.png';
 
 function Login() {
   const navigate = useNavigate();
@@ -26,6 +27,23 @@ function Login() {
     });
   };
 
+  const HorizonLine = ({ text }) => {
+    return (
+      <div
+        style={{
+          width: "100%",
+          textAlign: "center",
+          borderBottom: "1px solid #aaa",
+          lineHeight: "0.1em",
+          margin: "30px 0 20px",
+          fontSize: "14px",
+        }}
+      >
+        <span style={{ background: "#fff", padding: "0 10px" }}>{text}</span>
+      </div>
+    );
+  };
+
   const handleLogin = async (event) => {
     event.preventDefault(); // 기본 폼 제출 동작 방지
 
@@ -49,37 +67,34 @@ function Login() {
       }
     } catch (error) {
       // 네트워크 오류 처리
-        setMessage('Network Error');
+      setMessage('Network Error');
     }
   };
 
   return (
     <div className="container">
-  <div className="status-bar">
-    <div className="time">9:41</div>
-    <div className="status-icons"></div>
-  </div>
-  <div className="logo">
-  <img src="Logo.png" alt="Logo" className="logo-image"/> 
-  </div>
-  <form onSubmit={handleLogin}>
-    <div className='form'>
-      <label htmlFor="email">이메일</label>
-      <input type="text" name="email" value={formData.email} onChange={handleChange} />
-      <label htmlFor="password">비밀번호</label>
-      <input type="password" name="password" value={formData.password} onChange={handleChange} />
-      <div className="link-buttons">
-        <button className="link-button" onClick={handleLogin} >로그인</button>
-        <button className="link-button" onClick={handleSignup}>회원가입</button>
+      <div className="logo">
+        <img src={logLogo} alt="Logo" className="logo-image" />
       </div>
-      <div className="footer">
-        <span className="title">
-          <button className="rounded-button" onClick={handleGroup}>그룹찾기</button>
-        </span>
-      </div>
+      <form onSubmit={handleLogin}>
+        <div className='form'>
+          <input type="text" name="email" placeholder='이메일을 입력하세요' value={formData.email} onChange={handleChange} />
+          <input type="password" name="password" placeholder='비밀번호를 입력하세요' value={formData.password} onChange={handleChange} />
+          <button className="login-button" onClick={handleLogin} >로그인</button>
+          <div className="link-buttons">
+            <button className="link-button">아이디 찾기</button>
+            <button className="link-button">비밀번호 찾기</button>
+          </div>
+          <HorizonLine text="OR" />
+          <div className="footer">
+            <div className="button-container">
+              <button className="sign-up-button" onClick={handleSignup}>회원가입</button>
+              <button className="rounded-button" onClick={handleGroup}>그룹찾기</button>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
-  </form>
-</div>
   );
 }
 
