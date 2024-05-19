@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './pageGet.css';
+import logo from '../Login/logLogo.png'
 
 const PageGet = () => {
   const { placeName } = useParams();
@@ -12,7 +13,7 @@ const PageGet = () => {
   const handleMapComponent = () => {
     navigate('/web');
   };
-  
+
   const handleEditGroup = () => {
     if (!groupData) {
       console.error('groupData is undefined');
@@ -81,7 +82,7 @@ const PageGet = () => {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        if(!data) {
+        if (!data) {
           throw new Error('No group data found');
         }
         setGroupData(data);
@@ -98,20 +99,35 @@ const PageGet = () => {
   }
 
   return (
-    <div>
-      <h1>{groupData.title}</h1>
-      {groupData.image &&( 
-        <div className='image-container'>
-          <img src={groupData.image} alt='Picture' />
+    <div className='container-pageget'>
+      <h2 className='h1-get'>' {groupData.title} '<br /> 그룹 설정 페이지</h2>
+      <div className='form-pageget'>
+        <div className='logo'>
+          <img src={logo} alt="Logo" className="logo-image" />
         </div>
-      )}
-      <p>현재 참여자 수: {groupData.currentParticipants}</p>
-      <p>최대 참여자 수: {groupData.maxParticipants}</p>
-      <p>설명: {groupData.description}</p>
-      <button onClick={handleMapComponent}>지도로 가기</button>
-      <button onClick={handleEditGroup}>그룹 정보 수정</button>
-      <button onClick={handleJoinGroup}>그룹 참가</button>
-      <button onClick={handleEndRecruitment}>모집 종료</button>
+        {/*{groupData.image && (
+          <div className='image-container'>
+            <img src={groupData.image} alt='Picture' />
+          </div>
+        )}*/}
+        <div className='input-group-pageget'>
+          <div className='pageget-con'>
+            <p>현재 참여자 수: {groupData.currentParticipants}</p>
+          </div>
+          <div className='pageget-con'>
+            <p>최대 참여자 수: {groupData.maxParticipants}</p>
+          </div>
+          <div className='pageget-con'>
+            세부정보 <p className='detail-groupget'>{groupData.description}</p>
+          </div>
+        </div>
+        <div className='btn-container-pageget'>
+          <button onClick={handleMapComponent} className='btn-pageget'>지도로 가기</button>
+          <button onClick={handleEditGroup} className='btn-pageget'>그룹 정보 수정</button>
+          {/*<button onClick={handleJoinGroup} className='btn-pageget'>그룹 참가</button>*/}
+          <button onClick={handleEndRecruitment} className='btn-pageget'>모집 종료</button>
+        </div>
+      </div>
     </div>
   );
 };

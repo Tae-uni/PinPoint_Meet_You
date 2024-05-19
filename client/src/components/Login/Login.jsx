@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import "./style.css";
+import "./login.css";
 import logLogo from './logLogo.png';
 
 function Login() {
@@ -72,24 +72,24 @@ function Login() {
   };
 
   return (
-    <div className="container">
-      <div className="logo">
-        <img src={logLogo} alt="Logo" className="logo-image" />
+    <div className="container-login">
+      <div className="logo-login">
+        <img src={logLogo} alt="Logo" className="logo-img-login" />
       </div>
       <form onSubmit={handleLogin}>
-        <div className='form'>
+        <div className='form-login'>
           <input type="text" name="email" placeholder='이메일을 입력하세요' value={formData.email} onChange={handleChange} />
           <input type="password" name="password" placeholder='비밀번호를 입력하세요' value={formData.password} onChange={handleChange} />
-          <button className="login-button" onClick={handleLogin} >로그인</button>
-          <div className="link-buttons">
-            <button className="link-button">아이디 찾기</button>
-            <button className="link-button">비밀번호 찾기</button>
+          <button className="login-button-login" onClick={handleLogin} >로그인</button>
+          <div className="link-buttons-login">
+            <button className="link-button-loginid">아이디 찾기</button>
+            <button className="link-button-loginpw">비밀번호 찾기</button>
           </div>
           <HorizonLine text="OR" />
           <div className="footer">
-            <div className="button-container">
-              <button className="sign-up-button" onClick={handleSignup}>회원가입</button>
-              <button className="rounded-button" onClick={handleGroup}>그룹찾기</button>
+            <div className="button-container-login">
+              <button className="sign-up-button-login" onClick={handleSignup}>회원가입</button>
+              <button className="find-button-login" onClick={handleGroup}>그룹찾기</button>
             </div>
           </div>
         </div>

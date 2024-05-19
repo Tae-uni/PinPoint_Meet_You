@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './style.css';
+import './startPage.css';
 import logo from './LOGO.png';
 
 const StartPage = () => {
@@ -11,15 +11,13 @@ const StartPage = () => {
     }
 
     return (
-        <div className="outer-container">
-            <div className="white-container">
-                <div className="logo">
-                    <img src={logo} alt="Logo" className="logo-image" />
+        <div className="outer-container-start">
+            <div className="white-container-start">
+                <div className="logo-start">
+                    <img src={logo} alt="Logo" />
                 </div>
-                <div className="footer">
-                    <span className="title">
-                        <button className="rounded-button" onClick={handleStartClick}>시작하기</button>
-                    </span>
+                <div className="footer-start">
+                    <button className="rounded-button-start" onClick={handleStartClick}>시작하기</button>
                 </div>
             </div>
         </div>

@@ -1,8 +1,8 @@
-* {
+/* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+}*/
 
 body, html {
     height: 100%;
@@ -14,7 +14,7 @@ body, html {
     font-family: Arial, sans-serif;
 }
 
-.outer-container {
+.outer-container-start {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,14 +22,13 @@ body, html {
     height: 100%;
 }
 
-.white-container {
+.white-container-start {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    max-width: 360px;
     width: 400px;  /* 가로 길이 설정 */
-    height: 700px;  /* 세로 길이 설정 */
+    height: 760px;  /* 세로 길이 설정 */
     background: linear-gradient(150deg, rgba(150, 172, 255, 1.00) 0%, rgba(245, 138, 255, 1.00) 100%);
     border-radius: 30px;  /* 모서리를 둥글게 설정 */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* 그림자 설정 */
@@ -37,20 +36,16 @@ body, html {
     padding: 20px; /* 패딩을 추가하여 내부 여백을 만듭니다 */
 }
 
-.logo {
+.logo-start {
     margin-top: 50px; /* 로고를 상단에 배치 */
 }
 
-.logo-image {
-    width: 100px; /* 로고의 크기 조정 */
-    height: 130px; /* 로고의 크기 조정 */
-}
 
-.footer {
+.footer-start {
     margin-bottom: 50px; /* 버튼을 하단에 배치 */
 }
 
-.rounded-button {
+.rounded-button-start {
     background-color: #ffffff; /* 버튼 배경색 설정 */
     color: rgb(0, 0, 0); /* 텍스트 색상: 검정색 */
     padding: 15px 30px; /* 넓은 패딩으로 버튼을 더 크게 만듭니다 */
