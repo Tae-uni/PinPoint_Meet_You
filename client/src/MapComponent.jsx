@@ -114,10 +114,11 @@ const MapComponent = () => {
 };
 
 export default MapComponent; */
+
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
-import logo from '../Logo.png'; // 로고 이미지 경로를 적절히 변경하세요
+import logo from '../Logo.png'; 
 
 const MapComponent = () => {
   const navigate = useNavigate();
@@ -233,7 +234,6 @@ const MapComponent = () => {
         justifyContent: 'center', 
         alignItems: 'center', 
         padding: '10px 20px',
-        //boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' 
       }}>
         <img src={logo} alt="Logo" style={{ height: '40px', marginRight: '10px', marginTop: '10px' }} />
         <input

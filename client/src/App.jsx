@@ -9,8 +9,8 @@ import Login from './components/Login/Login.jsx';
 import SignUp from './components/Signup/Signup.jsx';
 import UpdateGroup from './components/UpdateGroup/UpdateGroup.jsx';
 import StartPage from './components/StartPage/StartPage.jsx';
-import ReviewGet from './ReviewGet.jsx';
-import ReviewPage from './ReviewPage.jsx';
+import ReviewPage from './components/Review/ReviewPage.jsx';
+import ReviewGet from './components/Review/ReviewGet.jsx';
 
 function App() {
 

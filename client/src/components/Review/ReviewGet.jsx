@@ -1,16 +1,22 @@
-// ReviewList.js
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from "react-router-dom";
+
 function ReviewGet() {
   const reviews = useSelector(state => state.reviews);
   const navigate = useNavigate();
   const { placeName } = useParams();
-  
+  const [clickCount, setClickCount] = useState(0);
+
   const handleUserPage = () => {
-    navigate(`/web/UserPageGet/${encodeURIComponent(placeName)}`);
-    
-  }
+    if (clickCount === 0) {
+      navigate(-1);
+    } else {
+      navigate(-2);
+    }
+    setClickCount(prevCount => prevCount + 1);
+  };
+
   return (
     <div>
       <h1>리뷰 목록</h1>

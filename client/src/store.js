@@ -1,26 +1,18 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 
-/*// 그룹 데이터 슬라이스
-const groupDataSlice = createSlice({
-  name: 'groupData',
-  initialState: {
-    title: '',
-    limit: 0,
-    content: ''
-  },
+// 그룹 참여 상태 슬라이스
+const joinStatusSlice = createSlice({
+  name: 'joinStatus',
+  initialState: false,
   reducers: {
-    setGroupData(state, action) {
-      state.title = action.payload.title;
-      state.limit = action.payload.limit;
-      state.content = action.payload.content;
+    joinGroup(state) {
+      return true;
     },
-    clearGroupData(state) {
-      state.title = '';
-      state.limit = 0;
-      state.content = '';
+    leaveGroup(state) {
+      return false;
     }
   }
-}); */
+});
 
 // 리뷰 슬라이스 추가
 const reviewsSlice = createSlice({
@@ -36,12 +28,12 @@ const reviewsSlice = createSlice({
   }
 });
 
-//export const { setGroupData, clearGroupData } = groupDataSlice.actions;
+export const { joinGroup, leaveGroup } = joinStatusSlice.actions;
 export const { addReview } = reviewsSlice.actions;
 
 export default configureStore({
   reducer: {
-    //groupData: groupDataSlice.reducer,
+    joinStatus: joinStatusSlice.reducer,
     reviews: reviewsSlice.reducer
   }
 });

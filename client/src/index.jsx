@@ -1,24 +1,16 @@
+// index.js
 import React from 'react';
 import { Provider } from 'react-redux';
-import { createRoot } from 'react-dom';
-//import { createRoot } from 'react-dom/client';
+import { createRoot } from 'react-dom/client'; // React 18용 createRoot 가져오기
 
 import store from './store';
 import App from './App';
 
-// ReactDOM.render 코드
-/*
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-);
-*/
-
-// ReactDOM.createRoot 코드
+// 진입점 설정
 const entryPoint = document.getElementById('root');
-createRoot(entryPoint).render(
+const root = createRoot(entryPoint);
+
+root.render(
   <Provider store={store}>
     <App />
   </Provider>
