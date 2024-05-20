@@ -65,17 +65,6 @@ function MapComponent2() {
       };
     }, []);
 
-   /* // 클릭한 마커의 정보에 따라 페이지 이동 처리
-    const handleMarkerClick = (place) => {
-      // PageSet1에서 데이터 입력 여부 확인
-      if(place.name === "공대 앞 음식&술집"){
-        if (groupData.title && groupData.limit && groupData.content) {
-          navigate('/web2/UserPageGet1');
-        } else {
-          alert("아직 만들어지는 그룹이 없습니다!");
-        }
-      }
-    };*/
     // 클릭한 마커의 정보에 따라 페이지 이동 처리
     const handleMarkerClick = async (place) => {
       try {

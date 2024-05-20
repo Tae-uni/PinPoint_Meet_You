@@ -67,7 +67,7 @@ const PageGet = () => {
       if (!response.ok) {
         throw new Error('Failed to delete group');
       }
-      alert('그룹이 삭제되었습니다.');
+      alert('그룹이 삭제되었습니다');
       navigate('/web');
     } catch (error) {
       console.error('Error deleting group:', error);
@@ -100,7 +100,7 @@ const PageGet = () => {
 
   return (
     <div className='container-pageget'>
-      <h2 className='h1-get'>' {groupData.title} '<br /> 그룹 설정 페이지</h2>
+      <h1 className='h1-get'>{groupData.title}</h1>
       <div className='form-pageget'>
         <div className='logo'>
           <img src={logo} alt="Logo" className="logo-image" />
@@ -123,9 +123,9 @@ const PageGet = () => {
         </div>
         <div className='btn-container-pageget'>
           <button onClick={handleMapComponent} className='btn-pageget'>지도로 가기</button>
-          <button onClick={handleEditGroup} className='btn-pageget'>그룹 정보 수정</button>
+          <button onClick={handleEditGroup} className='btn-pageupdate'>그룹 정보 수정</button>
           {/*<button onClick={handleJoinGroup} className='btn-pageget'>그룹 참가</button>*/}
-          <button onClick={handleEndRecruitment} className='btn-pageget'>모집 종료</button>
+          <button onClick={handleEndRecruitment} className='btn-pageend'>모집 종료</button>
         </div>
       </div>
     </div>

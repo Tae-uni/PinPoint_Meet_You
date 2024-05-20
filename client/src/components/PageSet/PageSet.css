@@ -16,10 +16,10 @@ h2 {
     height: 760px;
     background: #fff; /* 배경색 흰색 설정 */
     border-radius: 20px; /* 모서리 둥글게 처리 */
+    border: solid 2px #7d5aef;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
     overflow: hidden; /* 내용이 컨테이너 밖으로 넘칠 경우 숨김 */
     position: relative; /* 자식 요소의 절대 위치를 위한 기준점 설정 */
-    
 }
 
 

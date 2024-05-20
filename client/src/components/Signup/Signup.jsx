@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import * as Yup from 'yup';
+import "./sign.css";
+import signupLogo from '../Login/logLogo.png'
+import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
     const [formData, setFormData] = useState({
@@ -10,6 +13,11 @@ function SignUp() {
         birthdate: '',
         gender: 'Male'
     });
+    
+    const navigate = useNavigate();
+    const handleLogin = () => {
+        navigate('/login')
+    }
 
     const [errors, setErrors] = useState({});
 
@@ -68,6 +76,8 @@ function SignUp() {
                 // 서버 응답 오류 처리
                 console.error('Failed to submit form:', response.statusText);
             }
+            alert('환영합니다!');
+            navigate('/login');
         } catch (validationErrors) {
             // Handle validation errors
             const errors = {};
@@ -79,37 +89,37 @@ function SignUp() {
     };
 
     return (
-        <div style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
-            <h2>Sign Up</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="blo">
-                    <label htmlFor="username">Username:</label>
-                    <input type="text" name="username" value={formData.username} onChange={handleChange} />
+        <div className='container-sign'>
+            <form className='form-sign' onSubmit={handleSubmit}>
+                <div className="logo-sign">
+                    <img src={signupLogo} alt="Logo" className="logo-image" />
+                </div>
+                <div className="input-group-sign">
+                    <input type="text" name="username" value={formData.username} onChange={handleChange} placeholder='별명' />
+                    <button>확인</button>
                     {errors.username && <div className="error">{errors.username}</div>}
                 </div>
-                <div className="blo">
-                    <label htmlFor="email">E-mail:</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} />
+                <div className="input-group-sign">
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder='이메일' />
+                    <button>확인</button>
                     {errors.email && <div className="error">{errors.email}</div>}
                 </div>
-                <div className="blo">
-                    <label htmlFor="password">Password:</label>
-                    <input type="password" name="password" value={formData.password} onChange={handleChange} />
+                <div className="input-group-sign">
+                    <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder='비밀번호' />
+                    <button>확인</button>
                     {errors.password && <div className="error">{errors.password}</div>}
                 </div>
-                <div className="blo">
-                    <label htmlFor="confirmPassword">Confirm Password:</label>
-                    <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} />
+                <div className="input-group-sign">
+                    <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} placeholder='비밀번호 확인' />
+                    <button>확인</button>
                     {errors.confirmPassword && <div className="error">{errors.confirmPassword}</div>}
                 </div>
-                <div className="blo">
-                    <label htmlFor="birthdate">Birth Date:</label>
+                <div className="input-group-sign">
                     <input type="date" name="birthdate" value={formData.birthdate} onChange={handleChange} />
                     {errors.birthdate && <div className="error">{errors.birthdate}</div>}
                 </div>
-                <div className="blo">
-                    <label htmlFor="gender">Gender:</label>
-                    <select id="gender" name="gender" value={formData.gender} onChange={handleChange}>
+                <div className="input-group-sign">
+                    <select id="gender" name="gender" value={formData.gender} onChange={handleChange} >
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         <option value="Other">Other</option>
@@ -117,10 +127,14 @@ function SignUp() {
                     {errors.gender && <div className="error">{errors.gender}</div>}
                 </div>
                 <br />
-                <input type="submit" value="Sign Up" />
+                <div className='btn-signup-container'>
+                    <input type="submit" className='final-button' value="회원가입" /><br />
+                    <button onClick={handleLogin} className='login-btn-sign'>취소</button>
+                </div>
             </form>
         </div>
     );
+
 }
 
 export default SignUp;

@@ -6,7 +6,7 @@ import PageGet from './components/PageGet/PageGet.jsx';
 import MapComponent2 from './MapComponent2.jsx';
 import UserPageGet from './UserPageGet.jsx';
 import Login from './components/Login/Login.jsx';
-import SignUp from './Signup.jsx';
+import SignUp from './components/Signup/Signup.jsx';
 import UpdateGroup from './components/UpdateGroup/UpdateGroup.jsx';
 import StartPage from './components/StartPage/StartPage.jsx';
 import ReviewGet from './ReviewGet.jsx';

@@ -36,7 +36,8 @@ const PageSet = () => {
             if (!response.ok) {
                 throw new Error('Failed to create group');
             }
-
+            
+            alert('그룹이 생성되었습니다');
             navigate(`/web/PageGet/${encodeURIComponent(placeName)}`);
         } catch (error) {
             console.error('Error creating group:', error);
@@ -50,7 +51,8 @@ const PageSet = () => {
     return (
         <div className='container-pageset'>
             <div className='form-pageset'>
-                <h2>{placeName} 그룹 생성 페이지</h2>
+                <h2>{placeName}</h2>
+                그룹 생성 페이지
                 <form onSubmit={handleSubmit}>
                     <div className='logo-pageset'>
                         <img src={logo} alt="Logo" className='logo-img-pageset' />
