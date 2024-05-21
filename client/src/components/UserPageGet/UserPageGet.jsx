@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { joinGroup } from './store';
+import { joinGroup } from '../../store';
+import Logo from '../Login/logLogo.png';
+import './UserPageGet.css';
 
 function UserPageGet() {
   const navigate = useNavigate();
@@ -88,24 +90,33 @@ function UserPageGet() {
 
   return (
     <div>
+      <div className='container-user'>
       <h1>그룹 정보</h1>
-      <p>제목: {groupData.title}</p>
-      <p>인원 제한: {groupData.maxParticipants}</p>
-      <p>그룹 내용: {groupData.description}</p>
+      <div className="logo-userpage">
+        <img src={Logo} alt="logo" />
+      </div>
+      <div className='p-group'>
+          <p>{groupData.title}</p>
+      </div>
       <p>현재 인원: {groupData.currentParticipants}</p>
+      <p>인원 제한: {groupData.maxParticipants}</p><br/>
+      <div className='pageget-con'>
+        세부정보<p className='detail-groupget'>{groupData.description}</p>
+      </div>
       {!isJoined && (
         <>
-          <button onClick={handleJoinGroup}>그룹 참여하기</button>
-          <button onClick={handleGroup}>다른 그룹 찾으러가기</button>
+          <button className='final-button-userg' onClick={handleJoinGroup}>그룹 참여하기</button>
+          <button className='cancel-button-userg' onClick={handleGroup}>다른 그룹 찾으러가기</button>
         </>
       )}
       {isJoined && (
         <>
-          <button onClick={handleReview}>리뷰 작성하기</button>
-          <button onClick={handleReviewGet}>리뷰 목록 보기</button>
-          <button onClick={handleGroup}>다른 그룹 찾으러가기</button>
+          <button className='final-button-userg'onClick={handleReview}>리뷰 작성하기</button>
+          <button className='review-button-userg'onClick={handleReviewGet}>리뷰 목록 보기</button>
+          <button className='cancel-button-userg'onClick={handleGroup}>다른 그룹 찾으러가기</button>
         </>
       )}
+      </div>
     </div>
   );
 }

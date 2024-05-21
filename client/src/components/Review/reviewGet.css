@@ -1,0 +1,77 @@
+.Rcontainer {
+   width: 400px;
+   height: 760px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   background: #fff;
+   border-radius: 20px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   overflow: hidden;
+   position: relative;
+   align-items: center;
+}
+
+.Rtitle {
+   text-align: center;
+   color: #333;
+}
+
+.review-list {
+   margin-top: 20px;
+   width: 250px;
+}
+
+.review-item {
+   border-bottom: 1px solid #ddd;
+   padding: 10px 0;
+}
+
+.review-item:last-child {
+   border-bottom: none;
+}
+
+.review-header {
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 10px;
+}
+
+.title-rating {
+   display: flex;
+   align-items: center;
+   flex-grow: 1;
+   /* Add this line */
+}
+
+.Rh3 {
+   margin: 0;
+   color: #555;
+   font-size: 1.2em;
+   margin-right: 10px;
+}
+
+
+.review-content {
+   color: #333;
+   line-height: 1.6;
+}
+
+.star-rating {
+   display: flex;
+   align-items: center;
+   margin-left: 10px;
+}
+
+.Rpro {
+   text-align: center;
+   justify-content: center;
+   margin: 30px;
+}
+
+/* 로고 이미지 사이즈 설정 */
+.Rpro img {
+   width: auto;
+   height: auto;
+}

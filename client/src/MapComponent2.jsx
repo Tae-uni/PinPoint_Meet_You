@@ -21,8 +21,9 @@ function MapComponent2() {
     { name: "학생회관", location: new kakao.maps.LatLng(36.54238263196865, 128.79825430990368) },
     { name: "종스센", location: new kakao.maps.LatLng(36.54164682030522, 128.80282656684997) }
   ];
-  const handleLogIn = () => {
-    navigate('/web/Login');
+  
+  const handleLogoClick = () => {
+    navigate('/web');
   };
 
   useEffect(() => {
@@ -98,14 +99,14 @@ function MapComponent2() {
         alignItems: 'center',
         padding: '10px 20px',
       }}>
-        <img src={logo} alt="Logo" style={{ height: '40px', marginRight: '10px', marginTop: '10px' }} />
+        <img src={logo} alt="Logo" onClick={handleLogoClick} style={{ height: '40px', marginRight: '10px', marginTop: '10px', border: 'solid, red, 1px', borderRadius: '10px'}} />
         <input
           type="text"
-          placeholder="Search places..."
-          style={{ width: '300px', padding: '12px', borderRadius: '10px', borderStyle: 'none', marginTop: '10px' }}
+          placeholder="로그인 후 이용가능 합니다."
+          style={{ width: '300px', padding: '12px', borderRadius: '10px', marginTop: '10px', border: 'solid, red, 1px' }}
         />
       </header>
-      <div id="map" style={{ width: '100%', height: '100%' }}></div>
+      <div id="map" style={{ width: '100%', height: '100%', border: 'solid; red; 1px' }}></div>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PageSet from './components/PageSet/PageSet.jsx';
 import PageGet from './components/PageGet/PageGet.jsx';
 import MapComponent2 from './MapComponent2.jsx';
-import UserPageGet from './UserPageGet.jsx';
+import UserPageGet from './components/UserPageGet/UserPageGet.jsx';
 import Login from './components/Login/Login.jsx';
 import SignUp from './components/Signup/Signup.jsx';
 import UpdateGroup from './components/UpdateGroup/UpdateGroup.jsx';
