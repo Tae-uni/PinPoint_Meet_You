@@ -1,0 +1,39 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "unite" ]
+  pull_request:
+    branches: [ "unite" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        folder: [client, server]
+        node-version: [22.0.0]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+      working-directory: ./${{ matrix.folder }}
+
+    - name: Build
+      run: npm run build --if-present
+      working-directory: ./${{ matrix.folder }}
+
+    - name: Test
+      run: npm test
+      working-directory: ./${{ matrix.folder }}
